@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment/>
+    <entry key="selectStock">
+        SELECT * FROM STOCK
+        WHERE STK_NAME LIKE CONCAT(?,'%')
+    </entry>
+    <entry key="insertMember">
+        INSERT INTO ACCOUNT (MEM_NAME, MEM_MONEY)
+        VALUES (?,?)
+    </entry>
+</properties>
