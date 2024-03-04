@@ -1,6 +1,6 @@
 package com.ohgiraffers.stock.run;
 
-import com.ohgiraffers.stock.dto.memberDTO;
+import com.ohgiraffers.stock.dto.stockDTO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,27 +8,40 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import static com.ohgiraffers.stock.common.JDBCTemplate.close;
 import static com.ohgiraffers.stock.common.JDBCTemplate.getConnection;
 
-public class insertController {
-    public int insertMem(memberDTO memberDTO){
+public class accountController {
+    public void accountInfo(){
         Connection con = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rset = null;
-        int result = 0;
         Properties prop = new Properties();
+
+        stockDTO row = null;
+        List<stockDTO> empList = null;
 
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
-            String query = prop.getProperty("insertMember");
+            String query = prop.getProperty("calcStock");
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, memberDTO.getMemName());
-            pstmt.setInt(2, memberDTO.getMemMoney());
-            result = pstmt.executeUpdate();
-            
+            rset = pstmt.executeQuery();
+
+            empList = new ArrayList<>();
+
+            while(rset.next()){
+                row = new stockDTO();
+                row.setStockName(rset.getString("STK_NAME"));
+                row.setStockPrice(rset.getInt("AVG(STK_PRICE)"));
+                row.setCount(rset.getInt("SUM(STK_COUNT)"));
+
+                empList.add(row);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -39,6 +52,8 @@ public class insertController {
             close(con);
         }
 
-        return result;
+        for(stockDTO i : empList){
+            System.out.println(i);
+        }
     }
 }

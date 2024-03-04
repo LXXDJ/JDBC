@@ -15,8 +15,8 @@ import java.util.Properties;
 import static com.ohgiraffers.stock.common.JDBCTemplate.close;
 import static com.ohgiraffers.stock.common.JDBCTemplate.getConnection;
 
-public class selectController {
-    public void selectMenu(String str){
+public class searchController {
+    public void searchStock(String str){
         Connection con = getConnection();
         PreparedStatement pstmt = null;
         ResultSet rset = null;
@@ -27,7 +27,7 @@ public class selectController {
 
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
-            String query = prop.getProperty("selectStock");
+            String query = prop.getProperty("searchStock");
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, str);
             rset = pstmt.executeQuery();

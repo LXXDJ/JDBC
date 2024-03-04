@@ -1,5 +1,7 @@
 package com.ohgiraffers.stock.run;
 
+import com.ohgiraffers.stock.dto.memberDTO;
+
 import java.util.Scanner;
 
 public class insertApp {
@@ -11,12 +13,16 @@ public class insertApp {
         int money = sc.nextInt();
         sc.nextLine();
 
-        int index = new insertController().insertMem(name, money);
+        memberDTO memberDTO = new memberDTO();
+        memberDTO.setMemName(name);
+        memberDTO.setMemMoney(money);
+
+        int index = new insertController().insertMem(memberDTO);
 
         if(index>0){
-            System.out.println("성공");
+            System.out.println("입장성공");
         }else{
-            System.out.println("실패");
+            System.out.println("입장실패");
         }
     }
 }

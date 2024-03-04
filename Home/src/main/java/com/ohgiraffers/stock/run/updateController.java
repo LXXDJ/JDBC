@@ -1,40 +1,37 @@
 package com.ohgiraffers.stock.run;
 
-import com.ohgiraffers.stock.dto.memberDTO;
+import com.ohgiraffers.stock.common.JDBCTemplate;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static com.ohgiraffers.stock.common.JDBCTemplate.close;
-import static com.ohgiraffers.stock.common.JDBCTemplate.getConnection;
+import static com.ohgiraffers.menu.common.JDBCTemplate.close;
 
-public class insertController {
-    public int insertMem(memberDTO memberDTO){
-        Connection con = getConnection();
+public class updateController {
+    public int updateMoney(int price) {
+        Connection con = JDBCTemplate.getConnection();
         PreparedStatement pstmt = null;
-        ResultSet rset = null;
         int result = 0;
         Properties prop = new Properties();
 
         try {
             prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
-            String query = prop.getProperty("insertMember");
+            String query = prop.getProperty("updateMoney");
             pstmt = con.prepareStatement(query);
-            pstmt.setString(1, memberDTO.getMemName());
-            pstmt.setInt(2, memberDTO.getMemMoney());
+            pstmt.setInt(1, price);
+            pstmt.setString(2, "이다정");
+
             result = pstmt.executeUpdate();
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            close(rset);
             close(pstmt);
             close(con);
         }
