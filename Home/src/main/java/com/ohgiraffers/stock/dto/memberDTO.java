@@ -1,4 +1,4 @@
-package com.ohgiraffers.stock_default.dto;
+package com.ohgiraffers.stock.dto;
 
 public class memberDTO {
     private String memId;

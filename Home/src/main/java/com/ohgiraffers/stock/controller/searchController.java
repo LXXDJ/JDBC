@@ -1,6 +1,6 @@
-package com.ohgiraffers.stock_default.controller;
+package com.ohgiraffers.stock.controller;
 
-import com.ohgiraffers.stock_default.dto.stockDTO;
+import com.ohgiraffers.stock.dto.stockDTO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static com.ohgiraffers.stock_default.common.JDBCTemplate.close;
-import static com.ohgiraffers.stock_default.common.JDBCTemplate.getConnection;
+import static com.ohgiraffers.stock.common.JDBCTemplate.close;
+import static com.ohgiraffers.stock.common.JDBCTemplate.getConnection;
 
 public class searchController {
     public void searchStock(String name) {
@@ -26,7 +26,7 @@ public class searchController {
         List<stockDTO> empList = null;
 
         try {
-            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock_default/mapper/stock-query.xml"));
+            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
             String query = prop.getProperty("searchStock");
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, name);

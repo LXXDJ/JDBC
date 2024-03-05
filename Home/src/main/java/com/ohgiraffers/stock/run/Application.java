@@ -1,6 +1,6 @@
-package com.ohgiraffers.stock_default.run;
+package com.ohgiraffers.stock.run;
 
-import com.ohgiraffers.stock_default.view.stockMenu;
+import com.ohgiraffers.stock.view.stockMenu;
 
 public class Application {
     public static void main(String[] args) {

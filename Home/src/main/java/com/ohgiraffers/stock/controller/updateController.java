@@ -1,6 +1,6 @@
-package com.ohgiraffers.stock_default.controller;
+package com.ohgiraffers.stock.controller;
 
-import com.ohgiraffers.stock_default.common.JDBCTemplate;
+import com.ohgiraffers.stock.common.JDBCTemplate;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static com.ohgiraffers.stock_default.common.JDBCTemplate.close;
+import static com.ohgiraffers.stock.common.JDBCTemplate.close;
 
 public class updateController {
     public int updateMoney(String id, int price) {
@@ -19,7 +19,7 @@ public class updateController {
         Properties prop = new Properties();
 
         try {
-            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock_default/mapper/stock-query.xml"));
+            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
             String query = prop.getProperty("addMoney");
             pstmt = con.prepareStatement(query);
             pstmt.setInt(1, price);

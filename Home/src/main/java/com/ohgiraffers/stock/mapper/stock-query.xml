@@ -13,7 +13,7 @@
         SELECT * FROM MEMBER WHERE MEM_ID = ?
     </entry>
     <entry key="calcStock">
-        SELECT MEM_NAME, STK_NAME, AVG(STK_PRICE), SUM(STK_COUNT)
+        SELECT STK_NAME, AVG(STK_PRICE), SUM(STK_COUNT)
         FROM TRANSACTION
         GROUP BY STK_NAME
     </entry>

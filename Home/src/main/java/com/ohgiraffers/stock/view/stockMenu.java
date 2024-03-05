@@ -1,8 +1,8 @@
-package com.ohgiraffers.stock_default.view;
+package com.ohgiraffers.stock.view;
 
-import com.ohgiraffers.stock_default.dto.stockDTO;
-import com.ohgiraffers.stock_default.controller.*;
-import com.ohgiraffers.stock_default.dto.memberDTO;
+import com.ohgiraffers.stock.dto.stockDTO;
+import com.ohgiraffers.stock.controller.*;
+import com.ohgiraffers.stock.dto.memberDTO;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

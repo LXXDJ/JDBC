@@ -1,7 +1,7 @@
-package com.ohgiraffers.stock_default.controller;
+package com.ohgiraffers.stock.controller;
 
-import com.ohgiraffers.stock_default.dto.memberDTO;
-import com.ohgiraffers.stock_default.dto.stockDTO;
+import com.ohgiraffers.stock.dto.memberDTO;
+import com.ohgiraffers.stock.dto.stockDTO;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import static com.ohgiraffers.stock_default.common.JDBCTemplate.close;
-import static com.ohgiraffers.stock_default.common.JDBCTemplate.getConnection;
+import static com.ohgiraffers.stock.common.JDBCTemplate.close;
+import static com.ohgiraffers.stock.common.JDBCTemplate.getConnection;
 
 public class stockController {
     public int transactStock(String id, stockDTO stockDTO) {
@@ -27,7 +27,7 @@ public class stockController {
         memberDTO memberDTO = null;
 
         try {
-            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock_default/mapper/stock-query.xml"));
+            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
             String query = prop.getProperty("myInfo");
             pstmt = con.prepareStatement(query);
             pstmt.setString(1, id);

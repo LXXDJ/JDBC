@@ -1,4 +1,4 @@
-package com.ohgiraffers.stock_default.common;
+package com.ohgiraffers.stock.common;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +11,7 @@ public class JDBCTemplate {
         Properties prop = new Properties();
 
         try {
-            prop.load(new FileReader("src/main/java/com/ohgiraffers/stock_default/config/connection-info.properties"));
+            prop.load(new FileReader("src/main/java/com/ohgiraffers/stock/config/connection-info.properties"));
             String driver = prop.getProperty("driver");
             String url = prop.getProperty("url");
 
