@@ -18,7 +18,7 @@ public class stockMenu {
 
         label: while(true){
             System.out.println("=== 메인 메뉴 ===\n0. 프로그램 종료\n1. 전체 주식보기\n2. 내 정보\n3. 현금 추가입금\n4. 주식 구매\n5. 주식 판매");
-            System.out.println("6. 주식 검색\n7. 전체 거래내역 보기");
+            System.out.println("6. 주식 검색\n7. 전체 거래내역 보기\n8. 거래되는 주식 삭제");
             System.out.print("메뉴 선택 : ");
             String index = sc.nextLine();
 
@@ -39,6 +39,8 @@ public class stockMenu {
                 case "6" : searchStock();
                     continue label;
                 case "7" : new transactionController().showTransaction();
+                    continue label;
+                case "8" : deleteStock();
                     continue label;
                 default:
                     System.out.println("보기중에서 선택해주세요.");
@@ -159,10 +161,23 @@ public class stockMenu {
         }
     }
 
-    private void searchStock() {
+    public void searchStock() {
         System.out.print("주식명 입력 : ");
         String name = sc.nextLine();
 
         new searchController().searchStock(name);
+    }
+
+    public void deleteStock(){
+        System.out.print("주식명 입력 : ");
+        String name = sc.nextLine();
+
+        int index = new deleteController().deleteStock(name);
+
+        if(index>0){
+            System.out.println("삭제성공");
+        }else{
+            System.out.println("삭제실패");
+        }
     }
 }

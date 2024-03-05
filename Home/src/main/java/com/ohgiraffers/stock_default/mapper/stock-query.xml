@@ -43,4 +43,8 @@
     <entry key="viewallTransaction">
         SELECT * FROM TRANSACTION
     </entry>
+    <entry key="deleteStock">
+        DELETE FROM STOCK
+        WHERE STK_NAME = ?
+    </entry>
 </properties>

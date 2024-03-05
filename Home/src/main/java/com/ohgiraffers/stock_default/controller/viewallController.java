@@ -26,7 +26,7 @@ public class viewallController {
         List<stockDTO> empList = null;
 
         try {
-            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock/mapper/stock-query.xml"));
+            prop.loadFromXML(new FileInputStream("src/main/java/com/ohgiraffers/stock_default/mapper/stock-query.xml"));
             String query = prop.getProperty("viewallStock");
             pstmt = con.prepareStatement(query);
             rset = pstmt.executeQuery();
